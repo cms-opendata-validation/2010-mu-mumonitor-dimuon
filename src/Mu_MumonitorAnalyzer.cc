@@ -1,9 +1,9 @@
 // -*- C++ -*-
 //
-// Package:    DemoAnalyzer
-// Class:      DemoAnalyzer
+// Package:    Mu_Mumonitor_dimuon_2010
+// Class:      Mu_Mumonitor_dimuon_2010
 // 
-/**\class DemoAnalyzer DemoAnalyzer.cc Demo/DemoAnalyzer/src/DemoAnalyzer.cc
+/**\class Mu_Mumonitor_dimuon_2010 Mu_MumonitorAnalyzer.cc Validation/Mu_Mumonitor_dimuon_2010/src/Mu_MumonitorAnalyzer.cc
 
  Description: [one line class summary]
 
@@ -64,10 +64,10 @@
 // class declaration
 //
 
-class DemoAnalyzer: public edm::EDAnalyzer {
+class Mu_Mumonitor_dimuon_2010: public edm::EDAnalyzer {
 public:
-	explicit DemoAnalyzer(const edm::ParameterSet&);
-	~DemoAnalyzer();
+	explicit Mu_Mumonitor_dimuon_2010(const edm::ParameterSet&);
+	~Mu_Mumonitor_dimuon_2010();
 
 private:
 	virtual void beginJob();
@@ -117,7 +117,7 @@ TH1D *h203;
 // constructors and destructor
 //
 
-DemoAnalyzer::DemoAnalyzer(const edm::ParameterSet& iConfig) {
+Mu_Mumonitor_dimuon_2010::Mu_Mumonitor_dimuon_2010(const edm::ParameterSet& iConfig) {
 
 // *****************************************************************
 // This is the main analysis routine
@@ -224,7 +224,7 @@ h203 = fs->make<TH1D>("Lumi section", "Lumi section", 300, 0, 3000);
 }
 
 
-DemoAnalyzer::~DemoAnalyzer() {
+Mu_Mumonitor_dimuon_2010::~Mu_Mumonitor_dimuon_2010() {
 	// do anything here that needs to be done at destruction time
 	// (e.g. close files, deallocate resources etc.)
 }
@@ -236,7 +236,7 @@ DemoAnalyzer::~DemoAnalyzer() {
 //
 
 // ------------ method called for each event  ------------
-void DemoAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup) {
+void Mu_Mumonitor_dimuon_2010::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup) {
 
 // **********************************************
 // here each relevant event will get analyzed 
@@ -260,7 +260,7 @@ using namespace std;
 
 //--------------Fill basic Event-information histograms---------------------//
 // debug print commented out
-// LogInfo("Demo")<<"Event id: "<<iEvent.id()<<" Run number: "<<iEvent.run();
+// LogInfo("Validation")<<"Event id: "<<iEvent.id()<<" Run number: "<<iEvent.run();
 
 h200->Fill(iEvent.run());   // Run number which the analyzed Event belongs to
 h202->Fill((iEvent.id()).event());	// Event's EventNumber
@@ -280,11 +280,11 @@ if (!providesGoodLumisection(iEvent)) {
 
 // something went wrong with the JSON (see above)
   h201->Fill(iEvent.run());
-  LogInfo("Demo") << "bad JSON Event id (" << iEvent.id() << ") --> Skipping analysis...";
+  LogInfo("Validation") << "bad JSON Event id (" << iEvent.id() << ") --> Skipping analysis...";
 }
 else { // Event is to be analyzed
 
-  LogInfo("Demo")
+  LogInfo("Validation")
   << "Starting to analyze \n"
   << "Event number: " << (iEvent.id()).event()
   << ", Run number: " << iEvent.run()
@@ -341,8 +341,8 @@ else { // Event is to be analyzed
     h55->Fill(it->normalizedChi2());
 
 // the following can be uncommented if more log information is wished    
-//   LogInfo("Demo")  <<"global  muon track pointer "<<it;
-//   LogInfo("Demo")<<"global muon track p"<<it->p()<<"  global muon track pos"<<it->referencePoint()<<" global muon track vertex"<<it->vertex();
+//   LogInfo("Validation")  <<"global  muon track pointer "<<it;
+//   LogInfo("Validation")<<"global muon track p"<<it->p()<<"  global muon track pos"<<it->referencePoint()<<" global muon track vertex"<<it->vertex();
 
 //-----------------prepare variables to determine quality cuts---------------//
 // WHAT: 1) Find out the number of Hits in the current globalMuon-Track
@@ -452,11 +452,11 @@ else { // Event is to be analyzed
     }   //end of if(gmuons->size >=2 .....)
   }   //end of reco ::TrackCollection loop
  }  // end of if (goodlumisection)
-} //DemoAnalyzer::analyze ends
+} //Mu_Mumonitor_dimuon_2010::analyze ends
 
 
 // ---- method called for each event to check good quality lumi section ---- //
-bool DemoAnalyzer::providesGoodLumisection(const edm::Event& iEvent) {
+bool Mu_Mumonitor_dimuon_2010::providesGoodLumisection(const edm::Event& iEvent) {
 
 // check JSON "by hand"
 // This is a 'primitive' check which has the advantage that it also works 
@@ -772,15 +772,15 @@ bool DemoAnalyzer::providesGoodLumisection(const edm::Event& iEvent) {
 
 
 // ------------ method called once each job just before starting event loop  ------------
-void DemoAnalyzer::beginJob() {
+void Mu_Mumonitor_dimuon_2010::beginJob() {
 
 }
 
 // ------------ method called once each job just after ending the event loop  ------------
-void DemoAnalyzer::endJob() {
+void Mu_Mumonitor_dimuon_2010::endJob() {
 }
 
 //define this as a plug-in
-DEFINE_FWK_MODULE(DemoAnalyzer);
+DEFINE_FWK_MODULE(Mu_Mumonitor_dimuon_2010);
 
 

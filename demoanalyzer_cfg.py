@@ -2,14 +2,12 @@ import FWCore.ParameterSet.Config as cms
 from RecoMuon.TrackingTools.MuonServiceProxy_cff import *
 import PhysicsTools.PythonAnalysis.LumiList as LumiList
 import FWCore.ParameterSet.Types as CfgTypes
-#import FWCore.PythonUtilities.LumiList as LumiList
-process = cms.Process("Demo")
+process = cms.Process("Validation")
 
 
-# intialize MessageLogger and output report
 process.load("FWCore.MessageLogger.MessageLogger_cfi")
 process.MessageLogger.cerr.threshold = 'INFO'
-process.MessageLogger.categories.append('Demo')
+process.MessageLogger.categories.append('Validation')
 process.MessageLogger.cerr.INFO = cms.untracked.PSet(
         limit = cms.untracked.int32(-1)
         )
@@ -25,7 +23,7 @@ process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(20000000) )
 # set the number of events to be skipped (if any) at end of file below
 
 # define JSON file
-goodJSON = '/home/cms-opendata/CMSSW_4_2_8/src/Demo/DemoAnalyzer/datasets/Cert_136033-149442_7TeV_Apr21ReReco_Collisions10_JSON_v2.txt'
+goodJSON = '/home/cms-opendata/CMSSW_4_2_8/src/Validation/Mu_Mumonitor_dimuon_2010/datasets/Cert_136033-149442_7TeV_Apr21ReReco_Collisions10_JSON_v2.txt'
 
 myLumis = LumiList.LumiList(filename = goodJSON).getCMSSWString().split(',')
 
@@ -43,28 +41,9 @@ import FWCore.Utilities.FileUtils as FileUtils
 # and add up the histograms using root tools.                    *
 # ****************************************************************
 #
-# *** MinimumBias data set ***
-#files2010data = FileUtils.loadListFromFile ('/home/cms-opendata/CMSSW_4_2_8/src/Demo/DemoAnalyzer/datasets/CMS_Run2010B_MinimumBias_AOD_Apr21ReReco-v1_0000_file_index.txt')
 # *** Mu data set ***
-files2010data = FileUtils.loadListFromFile ('/home/cms-opendata/CMSSW_4_2_8/src/Demo/DemoAnalyzer/datasets/CMS_Run2010B_Mu_AOD_Apr21ReReco-v1_0000_file_index.txt')
-# *** MuOnia data set ***
-#files2010data = FileUtils.loadListFromFile ('/home/cms-opendata/CMSSW_4_2_8/src/Demo/DemoAnalyzer/datasets/CMS_Run2010B_MuOnia_AOD_Apr21ReReco-v1_0000_file_index.txt')
-# *** MuMonitor data set ***
-#files2010data = FileUtils.loadListFromFile ('/home/cms-opendata/CMSSW_4_2_8/src/Demo/DemoAnalyzer/datasets/CMS_Run2010B_MuMonitor_AOD_Apr21ReReco-v1_0000_file_index.txt')
-# *** Commissioning data set ***
-#files2010data = FileUtils.loadListFromFile ('/home/cms-opendata/CMSSW_4_2_8/src/Demo/DemoAnalyzer/datasets/CMS_Run2010B_Commissioning_AOD_Apr21ReReco-v1_0000_file_index.txt')
-process.source = cms.Source("PoolSource",
-    fileNames = cms.untracked.vstring(*files2010data    
-    )
-)
-
-# alternatively (e.g. for tests), directly use input file (commented)
-'''process.source = cms.Source("PoolSource",
-    # replace 'myfile.root' with the source file you want to use
-    fileNames = cms.untracked.vstring('root://eospublic.cern.ch//eos/opendata/cms/Run2010B/MuOnia/AOD/Apr21ReReco-v1/0000/0029E804-C77C-E011-BA94-00215E22239A.root'
-    
-    )
- )'''
+files2010data = FileUtils.loadListFromFile ('/home/cms-opendata/CMSSW_4_2_8/src/Validation/Mu_Mumonitor_dimuon_2010/datasets/CMS_Run2010B_Mu_AOD_Apr21ReReco-v1_0000_file_index.txt')
+process.source = cms.Source("PoolSource",fileNames = cms.untracked.vstring(*files2010data))
 
 # apply JSON file
 #   (needs to be placed *after* the process.source input file definition!)
@@ -77,7 +56,7 @@ process.source.lumisToProcess.extend(myLumis)
 process.source.skipEvents = cms.untracked.uint32(0)
 
 
-process.demo = cms.EDAnalyzer('DemoAnalyzer'
+process.demo = cms.EDAnalyzer('Mu_Mumonitor_dimuon_2010'
 )
 # ***********************************************************
 # output file name                                          *
@@ -87,12 +66,6 @@ process.TFileService = cms.Service("TFileService",
 # *********************************************************
 # exactly only one of the following should be uncommented *
 # *********************************************************
-#       fileName = cms.string('ZeroBias.root')
-#       fileName = cms.string('MinBias.root')
        fileName = cms.string('Mu00.root')
-#       fileName = cms.string('MuOnia.root')
-#       fileName = cms.string('MuMonitor.root')
-#       fileName = cms.string('Commissioning.root')
                                    )
-
 process.p = cms.Path(process.demo)
