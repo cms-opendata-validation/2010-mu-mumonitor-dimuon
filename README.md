@@ -54,15 +54,15 @@ It necessary to note that whole analysis can take around 21 hours!
  
 When you rerun all six index files you should have six root files with names:
 ```
- Mu00.root
- Mu01.root
- Mu02.root
- Mu03.root
- Mu04.root
- Mu05.root
+ Mu00val.root
+ Mu01val.root
+ Mu02val.root
+ Mu03val.root
+ Mu04val.root
+ Mu05val.root
 ```
  
-The last thing what you should do is to merge these four root files into one root file.
+The last thing what you should do is to merge these six root files into one root file.
 You do this as follow. In the downloaded repository is also file with name mergeMu.C .
 Press command for opening ROOT program: 
 ```
@@ -72,7 +72,7 @@ In this programe just type command:
 ```
 .x mergeMu.C .
 ```
-This merging creates a root file called MuAll.root .
+This merging creates a root file called MuAllval.root .
 To look at this output, write down command in ROOT program: 
 ```
 new TBrowser
