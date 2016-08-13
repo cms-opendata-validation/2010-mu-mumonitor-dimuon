@@ -52,7 +52,7 @@ These index files are the same as you can find in the open data portal record ht
 analysis you can read comments in the analysis code Mu_MumonitorAnalyzer.cc .        
 It necessary to note that whole analysis can take around 21 hours! 
  
-When you rerun for all four index files you should have four root files with names:
+When you rerun all six index files you should have six root files with names:
 ```
  Mu00.root
  Mu01.root
