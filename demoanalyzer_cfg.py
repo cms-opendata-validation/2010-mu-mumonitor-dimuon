@@ -66,6 +66,6 @@ process.TFileService = cms.Service("TFileService",
 # *********************************************************
 # exactly only one of the following should be uncommented *
 # *********************************************************
-       fileName = cms.string('Mu00.root')
+       fileName = cms.string('Mu00val.root')
                                    )
 process.p = cms.Path(process.demo)
