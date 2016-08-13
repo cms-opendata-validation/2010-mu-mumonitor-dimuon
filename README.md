@@ -39,17 +39,20 @@ After analysis, Mu00.root file should be created.
 Then, is necessary to change input and also output files in demoanalyzer_cfg.py, to save these changes and to rerun program. 
 In the datesets directory in the repository from github are index files with names:
 
+
  CMS_Run2010B_Mu_AOD_Apr21ReReco-v1_0000_file_index.txt
  CMS_Run2010B_Mu_AOD_Apr21ReReco-v1_0001_file_index.txt
  CMS_Run2010B_Mu_AOD_Apr21ReReco-v1_0002_file_index.txt
  CMS_Run2010B_Mu_AOD_Apr21ReReco-v1_0003_file_index.txt
  CMS_Run2010B_Mu_AOD_Apr21ReReco-v1_0004_file_index.txt
  CMS_Run2010B_Mu_AOD_Apr21ReReco-v1_0005_file_index.txt
+
  
 These index files are the same as you can find in the open data portal record http://opendata.cern.ch/record/2 , they are copied here for convenience and also for details of the analysis you can read comments in the analysis code DemoAnalyzer.cc .        
 It necessary to note that whole analysis can take around X hours! 
  
 When you rerun for all four index files you should have four root files with names:
+
  Mu00.root
  Mu01.root
  Mu02.root
