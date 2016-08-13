@@ -1,5 +1,5 @@
 # 2010-mu-mumonitor-dimuon
-Validation code for 2010 Mu and MuMonitor datasets, based on dimuon mass spectrum
+Validation code for 2010 Mu and MuMonitor datasets, based on dimuon mass spectrum.
 
 You need to work in a Virtual Machine properly contextualized for CMS.
 Everything is available on the CERN Open Data Portal http://opendata.cern.ch/VM/CMS/2010.
@@ -49,7 +49,7 @@ In the datesets directory in the repository from github are index files with nam
 ```
  
 These index files are the same as you can find in the open data portal record http://opendata.cern.ch/record/2 , they are copied here for convenience and also for details of the analysis you can read comments in the analysis code DemoAnalyzer.cc .        
-It necessary to note that whole analysis can take around X hours! 
+It necessary to note that whole analysis can take around 21 hours! 
  
 When you rerun for all four index files you should have four root files with names:
 ```
@@ -59,7 +59,7 @@ When you rerun for all four index files you should have four root files with nam
  Mu03.root
  Mu04.root
  Mu05.root
- ```
+```
  
 The last thing what you should do is to merge these four root files into one root file.
 You do this as follow. In the downloaded repository is also file with name mergeMu.C .
@@ -71,9 +71,9 @@ In this programe just type command:
 ```
 .x mergeMu.C .
 ```
-This merging creates a root file called MuAllval.root .
+This merging creates a root file called MuAll.root .
 To look at this output, write down command in ROOT program: 
 ```
 new TBrowser
 ```
-and navigate to relevant file. The most interesting histogram is GM_mass_log. This is the validation histogram. 
+and navigate to relevant file. The most interesting histogram is GM_mass_log. This is the validation histogram.
