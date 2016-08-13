@@ -52,14 +52,14 @@ These index files are the same as you can find in the open data portal record ht
 It necessary to note that whole analysis can take around X hours! 
  
 When you rerun for all four index files you should have four root files with names:
-
+```
  Mu00.root
  Mu01.root
  Mu02.root
  Mu03.root
  Mu04.root
  Mu05.root
- 
+ ```
  
 The last thing what you should do is to merge these four root files into one root file.
 You do this as follow. In the downloaded repository is also file with name mergeMu.C .
