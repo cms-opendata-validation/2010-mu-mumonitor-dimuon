@@ -1,6 +1,8 @@
 # 2010-mu-mumonitor-dimuon
 Validation code for 2010 Mu and MuMonitor datasets, based on dimuon mass spectrum.
 
+It is based on the original code in [http://opendata.cern.ch/record/460] on the CERN Open Data portal (Geiser, Achim; Dutta, Irene; Hirvonsalo, Harri; Sheeran, Bridget; (2016). Validation code for 2010 Mu and MuMonitor datasets, based on dimuon mass spectrum. CERN Open Data Portal. DOI:10.7483/OPENDATA.CMS.A8CP.HBJQ ) and modified here for direct download from github.
+
 You need to work in a Virtual Machine properly contextualized for CMS.
 Everything is available on the CERN Open Data Portal http://opendata.cern.ch/VM/CMS/2010.
 
