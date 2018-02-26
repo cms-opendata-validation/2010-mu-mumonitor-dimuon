@@ -22,7 +22,7 @@ cd CMSSW_4_2_8/src
 ```
 For cloning type:
 ```
-git clone https://github.com/cms-opendata-validation/2010-mu-mumonitor-dimuon  Validation/Mu_Mumonitor_dimuon_2010
+git clone git://github.com/cms-opendata-validation/2010-mu-mumonitor-dimuon  Validation/Mu_Mumonitor_dimuon_2010
 ```
 
 ## Setting up the CMS environment
